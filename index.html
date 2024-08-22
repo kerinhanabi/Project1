@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        body {
+            background: #ddd;
+            max-width: 960px;;
+            margin: 20px auto;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        p, h3, ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        button {display:block;}
+
+        li {
+            list-style-type: none;
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.odd {
+            background-color: #ffabd8;
+            color: #fff;
+        }
+        li.fav {
+            background: linear-gradient(#ff9ed2,#d62483);
+            color: #fff;
+        }
+
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background-color: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Hello Vue :)</h1>
+
+    <div id="app">
+        <div v-if="ShowProfile">
+            <!-- sample 3: computed properties -->
+             <h3>--Computed properties--</h3>
+            <ul>
+                <li v-for="person in filteredProfile" :class="{ odd: person.isOdd, fav: person.isFav }" @click="ToggleFav(person)">
+                    <img :src="person.img" :alt="person.Name">
+                    <h3>{{ person.Name }}</h3>
+                    <p>{{ person.Number }}</p>
+                    <p>{{ person.Age }}</p>
+                </li>
+             </ul>
+            <!-- attribute binding -->
+             <!--a :href="url">Google</a-->
+            <!-- sample 2-->
+             <hr>
+             <ul>
+                <li v-for="person in profile" :class="{ odd: person.isOdd, fav: person.isFav }" @click="ToggleFav(person)">
+                    <img :src="person.img" :alt="person.Name">
+                    <h3>{{ person.Name }}</h3>
+                    <p>{{ person.Number }}</p>
+                    <p>{{ person.Age }}</p>
+                </li>
+             </ul>
+            <!-- sample 1-->
+            <!--p>{{ profile[0].Name }} - {{ profile[0].Number }} - {{ profile[0].Age }}</p>
+            <p>{{ profile[1].Name }} - {{ profile[1].Number }} - {{ profile[1].Age }}</p>
+            <p>{{ profile[2].Name }} - {{ profile[2].Number }} - {{ profile[2].Age }}</p-->
+        </div>
+
+        <button @click="ToggleShowProfile">
+            <span v-if="ShowProfile">Hide Profile</span>
+            <!-- or -->
+            <!-- span v-if="!ShowProfile">Show Profile</span-->
+            <!-- or -->
+            <span v-else>Show Profile</span>
+            <!-- or -->
+            <!-- span v-if="ShowProfile == false">Show Profile</span-->
+        </button>
+
+        <!-- mouse event -->
+        <!--div class="box" @mouseover="MouseEvent($event, 5)">mouseover (hover)</div>
+        <div class="box" @mouseleave="MouseEvent">mouseleave</div>
+        <div class="box" @dblclick="MouseEvent">double click</div>
+        <div class="box" @mousemove="handleMousemove">position - X:{{ x }} Y:{{ y }}</div-->
+
+        <!------------------------------------------------------------->
+        <!-- using CSS-style to hide show : msg text indicates showing profile -->
+        <!-- for item needs to repeatly hide/show over and over eg: dropdown menu etc -->
+        <!-- for item not changing very often use v-if -->
+        <!--div v-show="ShowProfile">Currently showing Profile</div-->
+
+        <!--h5>I am a template.</h5>
+        <p>{{ Name }}</p>
+        <p>{{ Phoneno }}</p>
+        <p>{{ Age }}</p>
+
+        <button v-on:click="Age++">+ Age</button>
+        <button @click="Age--">- Age</button>
+        <div @click="changeName('Kerin Title 3abc')">Max Age 40</div-->
+            <hr>
+            <!--tutorials-->
+            {{ message }} <br>
+            {{'Random number: ' + Math.ceil(Math.random()*6) }}
+        </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
